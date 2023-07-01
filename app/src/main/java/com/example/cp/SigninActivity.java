@@ -24,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.cp.Modal.SignupModel;
 import com.example.cp.Modal.UserSessionManager;
 import com.example.cp.Utils.LoginKeys;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -138,8 +139,9 @@ public class SigninActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                 Log.e("fghfh", response.toString());
 
-                sessionManager.createLoginSession(response);
-
+                Gson gson = new Gson();
+                SignupModel model = gson.fromJson(String.valueOf(response), SignupModel.class);
+                sessionManager.createLoginSession(model);
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);//  after adding session home activity is called
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // add new flag to create new activity
