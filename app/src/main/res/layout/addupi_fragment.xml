@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Enter Name"
+        android:inputType="textPersonName"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="@drawable/ssb"
+        tools:ignore="MissingConstraints" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Enter UPI ID"
+        android:inputType="number"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="@drawable/ssa"/>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="50dp">
+
+
+
+
+
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/ssb"
+            android:gravity="center"
+            android:text="Save"
+            android:backgroundTint="@color/green"/>
+
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/ssb"
+            android:gravity="center"
+            android:text="Cancel"
+            android:backgroundTint="@color/design_default_color_error"/>
+
+    </LinearLayout>
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Existing bank account/upi"
+        android:padding="10dp"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/radioGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:background="@drawable/ssb"-->
+            <!--                android:layout_marginLeft="10dp"-->
+            <!--                android:layout_marginRight="10dp"-->
+            <!--                android:orientation="horizontal">-->
+            <RadioButton
+                android:id="@+id/radioButtonMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Pymentoption1@ybl\n\ Name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="edit"-->
+            <!--                    android:layout_marginStart="100dp"/>-->
+
+            <!--            </LinearLayout>-->
+
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal">-->
+            <!--            <RadioButton-->
+            <!--                android:id="@+id/radioButtonFemale"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="WDM Bank\n\123********908"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textSize="18sp"-->
+
+            <!--                />-->
+
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="edit"-->
+            <!--                android:layout_marginStart="100dp"/>-->
+
+
+            <!--            </LinearLayout>-->
+
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:background="@drawable/ssb"-->
+            <!--                android:layout_marginTop="20dp"-->
+            <!--                android:layout_marginLeft="10dp"-->
+            <!--                android:layout_marginRight="10dp"-->
+            <!--                android:orientation="horizontal">-->
+            <RadioButton
+                android:id="@+id/radioButtoncxvMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="WDM Bank\n\123******908"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="edit"-->
+            <!--                    android:layout_marginStart="150dp"/>-->
+
+            <!--            </LinearLayout>-->
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/black"
+            android:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/logo"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/tv_astrology"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Color Prediction Game"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@android:color/holo_orange_light"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+
+            <!--            <ImageView-->
+<!--                android:id="@+id/iv_settings"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:src="@drawable/baseline_notifications_none_24" />-->
+
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:backgroundTint="@color/yellow">
+
+
+
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=" balance"
+                            android:gravity="left"
+                            android:layout_marginTop="20dp"
+                            android:layout_gravity="center" />
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text=" 25000"
+                            android:gravity="left"
+
+                            android:layout_gravity="center" />
+
+
+
+
+                        <!--                <LinearLayout-->
+                        <!--                    android:layout_width="match_parent"-->
+                        <!--                    android:layout_height="wrap_content"-->
+
+                        <!--                    android:orientation="horizontal">-->
+
+                        <!--                    <TextView-->
+                        <!--                        android:layout_width="80dp"-->
+                        <!--                        android:layout_height="45dp"-->
+                        <!--                        android:text="Add money"-->
+
+                        <!--                        android:gravity="center"-->
+                        <!--                        android:layout_marginTop="50dp"-->
+                        <!--                        android:textColor="@color/white"-->
+                        <!--                        android:layout_marginStart="10dp"-->
+                        <!--                        android:backgroundTint="@color/green"-->
+                        <!--                        android:background="@drawable/ssa"/>-->
+
+
+
+                        <!--                    <TextView-->
+                        <!--                        android:layout_width="80dp"-->
+                        <!--                        android:layout_height="45dp"-->
+                        <!--                        android:text="Read rules"-->
+                        <!--                        android:gravity="center"-->
+                        <!--                        android:layout_marginTop="50dp"-->
+                        <!--                        android:textColor="@color/white"-->
+                        <!--                        android:layout_marginStart="10dp"-->
+                        <!--                        android:backgroundTint="@color/design_default_color_error"-->
+                        <!--                        android:background="@drawable/ssa"/>-->
+
+
+
+                        <!--                </LinearLayout>-->
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="Add money"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/black"
+                android:background="@drawable/ssa"
+                android:textColor="@color/white"/>
+
+
+
+            <EditText
+                android:id="@+id/amount"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="Enter amount"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:inputType="number"
+                android:background="@drawable/ssa"
+                android:textColor="@color/black"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="Add Money"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/design_default_color_secondary_variant"
+                android:background="@drawable/ssa"
+                android:textColor="@color/white"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
+                        android:text="100"
+                        android:padding="10dp"
+                        android:layout_marginStart="15dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/design_default_color_secondary_variant"
+                        android:background="@drawable/ssa"/>
+
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
+                        android:text="300"
+                        android:padding="10dp"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/design_default_color_secondary_variant"
+                        android:background="@drawable/ssa"/>
+
+
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
+                        android:text="500"
+                        android:padding="10dp"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/design_default_color_secondary_variant"
+                        android:background="@drawable/ssa"/>
+
+
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
+                        android:text="1000"
+                        android:padding="10dp"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/design_default_color_secondary_variant"
+                        android:background="@drawable/ssa"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
+                        android:text="2000"
+                        android:padding="10dp"
+                        android:layout_marginStart="15dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/design_default_color_secondary_variant"
+                        android:background="@drawable/ssa"/>
+
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
+                        android:text="5000"
+                        android:padding="10dp"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/design_default_color_secondary_variant"
+                        android:background="@drawable/ssa"/>
+
+
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
+                        android:text="10000"
+                        android:padding="10dp"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/design_default_color_secondary_variant"
+                        android:background="@drawable/ssa"/>
+
+
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"
+                        android:text="50000"
+                        android:padding="10dp"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/design_default_color_secondary_variant"
+                        android:background="@drawable/ssa"/>
+
+                </LinearLayout>
+
+
+                <!--        <TextView-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="45dp"-->
+                <!--            android:text="Add new aqccount"-->
+                <!--            android:gravity="start"-->
+                <!--            android:padding="10dp"-->
+                <!--            android:drawableEnd="@drawable/baseline_add_24"-->
+                <!--            android:layout_marginTop="10dp"-->
+                <!--            android:layout_marginLeft="10dp"-->
+                <!--            android:layout_marginRight="10dp"-->
+                <!--            android:backgroundTint="@color/design_default_color_secondary_variant"-->
+                <!--            android:background="@drawable/ssa"-->
+                <!--            android:textColor="@color/white"/>-->
+
+
+
+
+
+
+                <RadioGroup
+                    android:id="@+id/radioGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radioButtonoption1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Payment option1"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <!--            <TextView-->
+                    <!--                android:layout_width="wrap_content"-->
+                    <!--                android:layout_height="wrap_content"-->
+                    <!--                android:text="edit"/>-->
+
+                    <RadioButton
+                        android:id="@+id/radioButtonoption2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Payment option2"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+
+                        />
+                </RadioGroup>
+
+
+                <Button
+                    android:id="@+id/withdrawbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Withdrawal"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+
+                    android:backgroundTint="@color/green"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="Withdrawal Records"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/black"
+                    android:background="@drawable/ssa"
+                    android:textColor="@color/white"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="200dp">
+
+
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sr.no"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TrnType"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Full Name"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bank/UPI Name"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Acc/UPI Number"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="IFSC"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Account"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fee"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Status"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CretedAt"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:layout_marginStart="25dp"/>
+
+
+
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                </androidx.cardview.widget.CardView>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/black">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:drawableTint="@color/white"
+                            android:id="@+id/action_home"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableTop="@drawable/baseline_home_24"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:text="Home"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:drawableTint="@color/white"
+                            android:id="@+id/action_win"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableTop="@drawable/baseline_home_24"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:text="Win"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+
+                        <TextView
+                            android:drawableTint="@color/white"
+                            android:id="@+id/action_Profile"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableTop="@drawable/baseline_person_24"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:text="Profile"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

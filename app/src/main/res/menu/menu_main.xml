@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <group
+        android:id="@+id/grp0"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+
+            android:orderInCategory="100"
+            android:title="Home"
+            app:showAsAction="never" />
+    </group>
+
+    <group
+        android:id="@+id/grp1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/invite"
+
+            android:orderInCategory="100"
+            android:title="Invite"
+            app:showAsAction="never" />
+    </group>
+
+    <group
+        android:id="@+id/grp2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/wallet"
+
+            android:orderInCategory="200"
+            android:title="Wallet"
+            app:showAsAction="never" />
+    </group>
+    <group
+        android:id="@+id/grp3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/resetpassword"
+
+            android:orderInCategory="300"
+            android:title="Reset password"
+            app:showAsAction="never" />
+    </group>
+<!--    <group-->
+<!--        android:id="@+id/grp4"-->
+<!--        android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/action_withdrawal"-->
+
+<!--            android:orderInCategory="400"-->
+<!--            android:title="Withdrawal"-->
+<!--            app:showAsAction="never" />-->
+<!--    </group>-->
+
+<!--    <group-->
+<!--        android:id="@+id/grp5"-->
+<!--        android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/action_addaccountupi"-->
+
+<!--            android:orderInCategory="500"-->
+<!--            android:title="Add bank account/UPI"-->
+<!--            app:showAsAction="never" />-->
+<!--    </group>-->
+
+
+<!--    <group-->
+<!--        android:id="@+id/grp6"-->
+<!--        android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/action_transactions"-->
+
+<!--            android:orderInCategory="600"-->
+<!--            android:title="Transactions"-->
+<!--            app:showAsAction="never" />-->
+<!--    </group>-->
+
+
+<!--    <group-->
+<!--        android:id="@+id/grp7"-->
+<!--        android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/action_account_security"-->
+
+<!--            android:orderInCategory="700"-->
+<!--            android:title="Account security"-->
+<!--            app:showAsAction="never" />-->
+<!--    </group>-->
+
+
+    <group
+        android:id="@+id/grp8"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/customerSupport"
+
+            android:orderInCategory="800"
+            android:title="Customer support"
+            app:showAsAction="never" />
+    </group>
+
+<!--    <group-->
+<!--        android:id="@+id/grp9"-->
+<!--        android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/tandc"-->
+
+<!--            android:orderInCategory="800"-->
+<!--            android:title="Terms and Conditions"-->
+<!--            app:showAsAction="never" />-->
+<!--    </group>-->
+<!--    <group-->
+<!--        android:id="@+id/grp10"-->
+<!--        android:checkableBehavior="single">-->
+
+<!--        <item-->
+<!--            android:id="@+id/privacyPolicy"-->
+
+<!--            android:orderInCategory="800"-->
+<!--            android:title="Privacy Policy"-->
+<!--            app:showAsAction="never" />-->
+<!--    </group>-->
+<!--    <group-->
+<!--        android:id="@+id/grp11"-->
+<!--        android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/help"-->
+
+<!--            android:orderInCategory="800"-->
+<!--            android:title="Help ?"-->
+<!--            app:showAsAction="never" />-->
+<!--    </group>-->
+
+    <group
+        android:id="@+id/grp12"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/action_tandcDesclaimer"
+
+            android:orderInCategory="900"
+            android:title="Log Out"
+            app:showAsAction="never" />
+    </group>
+
+</menu>
