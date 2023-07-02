@@ -8,5 +8,9 @@
     <color name="blue">#3D5AFE</color>
     <color name="skyblue">#00B0FF</color>
     <color name="gray">#A5A9AA</color>
-
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#D5A5A3A3</color>
+    <color name="colorAccent">#E95345</color>
+    <color name="trueBlack">#000000</color>
+    <color name="otp_editext_color">#DAE2DFDF</color>
 </resources>

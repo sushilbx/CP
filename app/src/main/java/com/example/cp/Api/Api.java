@@ -2,9 +2,12 @@ package com.example.cp.Api;
 
 
 import com.example.cp.Modal.AddBankAccountModel;
+import com.example.cp.Modal.ChangePasswordModel;
+import com.example.cp.Modal.ForgotPasswordModel;
 import com.example.cp.Modal.InviteModel;
 import com.example.cp.Modal.SignupModel;
 import com.example.cp.Modal.WalletDepositeModel;
+import com.example.cp.Modal.WalletWithdrawlModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -47,7 +50,7 @@ public interface Api {
 
     @FormUrlEncoded
     @POST("api/wallet/withdrawal")
-    Call<WalletDepositeModel> walletWithdrawl(
+    Call<WalletWithdrawlModel> walletWithdrawl(
             @Header("Authorization") String Authorization,
             @Field("amount") String amount,
             @Field("fee") String fee,
@@ -56,13 +59,35 @@ public interface Api {
             @Field("transfer_type") String transfer_type,
             @Field("transfer_account") String transfer_account
     );
+
     @GET("api/user/invite/list")
     Call<SignupModel> getInviteList(
             @Header("Authorization") String Authorization
     );
+
     @GET("api/accountSecurity/list")
     Call<SignupModel> getSecurityList(
             @Header("Authorization") String Authorization
+    );
+
+    @FormUrlEncoded
+    @POST("api/send/otp")
+    Call<ForgotPasswordModel> forgotPass(
+            @Header("Authorization") String Authorization,
+            @Field("phone") String phone
+
+    );
+
+    @FormUrlEncoded
+    @POST("api/change/password")
+    Call<ChangePasswordModel> changePassword(
+            @Header("Authorization") String Authorization,
+            @Field("phone") String phone,
+            @Field("password") String password,
+            @Field("password_confirmation") String password_confirmation,
+            @Field("otp") String otp
+
+
     );
 
 

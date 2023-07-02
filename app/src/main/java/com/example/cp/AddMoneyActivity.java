@@ -53,14 +53,14 @@ public class AddMoneyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (validation()) {
-                    signUp();
+                    addMoney();
                 }
             }
         });
 
     }
 
-    private void signUp() {
+    private void addMoney() {
         Log.e("Token", "Bearer " + signupModel.token);
         Log.e("djffj",""+ amount);
         Log.e("djffj",""+ tn_ref_no);
@@ -73,7 +73,7 @@ public class AddMoneyActivity extends AppCompatActivity {
                     Log.e("sushil Signup", new Gson().toJson(response.body()));
                     if (response.body().message.equalsIgnoreCase("Request Submitted Successfully")) {
                         Toast.makeText(AddMoneyActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AddMoneyActivity.this, DashboardActivity.class);
+                        Intent intent = new Intent(AddMoneyActivity.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
 

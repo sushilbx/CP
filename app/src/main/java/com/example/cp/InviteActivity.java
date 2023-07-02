@@ -137,7 +137,7 @@ public class InviteActivity extends AppCompatActivity {
 
                     if (response.body().message.equalsIgnoreCase("invite Send Successfully")) {
                         Toast.makeText(InviteActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(InviteActivity.this, DashboardActivity.class);
+                        Intent intent = new Intent(InviteActivity.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
 

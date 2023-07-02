@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -15,198 +15,121 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CP"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31"
-        tools:replace="android:icon">
+        tools:replace="android:icon"
+        tools:targetApi="31">
+        <activity
+            android:name=".OtpActivity"
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
-
         <activity
-            android:name="com.example.cp.RegisterActivity"
+            android:name=".RegisterActivity"
+            android:exported="true"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.SigninActivity"
+            android:name=".SigninActivity"
+            android:exported="true"
             android:label="@string/title_activity_signin"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.HomeActivity"
+            android:name=".HomeActivity"
+            android:exported="true"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.DashboardActivity"
+            android:name=".DashboardActivity"
+            android:exported="true"
             android:label="@string/title_activity_dashboard"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.ProfileActivity"
+            android:name=".ProfileActivity"
+            android:exported="true"
             android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.InviteActivity"
+            android:name=".InviteActivity"
+            android:exported="true"
             android:label="@string/title_activity_invite"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.WalletActivity"
+            android:name=".WalletActivity"
+            android:exported="true"
             android:label="@string/title_activity_wallet"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.AddMoneyActivity"
+            android:name=".AddMoneyActivity"
+            android:exported="true"
             android:label="@string/title_activity_addmoney"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.WithdrawalActivity"
+            android:name=".WithdrawalActivity"
+            android:exported="true"
             android:label="@string/title_activity_withdrawal"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.TransactionActivity"
+            android:name=".TransactionActivity"
+            android:exported="true"
             android:label="@string/title_activity_transaction"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.ForgotpasswordActivity"
+            android:name=".ForgotpasswordActivity"
+            android:exported="true"
             android:label="@string/title_activity_forgotpassword"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.AddBankAccountActivity"
+            android:name=".AddBankAccountActivity"
+            android:exported="true"
             android:label="@string/title_activity_addbankaccount"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.NotificationActivity"
+            android:name=".NotificationActivity"
+            android:exported="true"
             android:label="@string/title_activity_notification"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.ProfileNotinActivity"
+            android:name=".ProfileNotinActivity"
+            android:exported="true"
             android:label="@string/title_activity_profilenotin"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.CustomerSupportActivity"
+            android:name=".CustomerSupportActivity"
+            android:exported="true"
             android:label="@string/title_activity_customersupport"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.ApplyBalanceActivity"
+            android:name=".ApplyBalanceActivity"
+            android:exported="true"
             android:label="@string/title_activity_applybalance"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.ReadrulesActivity"
+            android:name=".ReadrulesActivity"
+            android:exported="true"
             android:label="@string/title_activity_readrules"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.GreenActivity"
+            android:name=".GreenActivity"
+            android:exported="true"
             android:label="@string/title_activity_green"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.VioletActivity"
+            android:name=".VioletActivity"
+            android:exported="true"
             android:label="@string/title_activity_violet"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
-
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="com.example.cp.RedActivity"
+            android:name=".RedActivity"
+            android:exported="true"
             android:label="@string/title_activity_red"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

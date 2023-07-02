@@ -83,7 +83,7 @@ public class AddBankAccountFragment extends Fragment {
                     Log.e("sushil Signup", new Gson().toJson(response.body()));
                     if (response.body().message.equalsIgnoreCase("Bank Details Update Successfully")) {
                         Toast.makeText(getContext(), response.body().message, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getContext(), DashboardActivity.class);
+                        Intent intent = new Intent(getContext(), HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
 
