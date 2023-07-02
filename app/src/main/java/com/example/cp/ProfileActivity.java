@@ -140,7 +140,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        profileImage = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.iv_profileImage1);
+     //   profileImage = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.iv_profileImage1);
 
         try {
             if (profileImage1.equals("Male") & profileImage1.isEmpty()) {
