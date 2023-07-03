@@ -37,6 +37,8 @@ public class DashboardActivity extends AppCompatActivity {
     long endTime = 0;
     long countDown = 0;
 
+    String bet_id = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,7 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(view);
         sessionManager = new SessionManager(DashboardActivity.this);
         signupModel = sessionManager.getLoginSession();
-        clickListener();
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,6 +61,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     //2023-07-03 13:52:00
     private void playGame() {
+        Log.e("token", "Bearer " + signupModel.token);
         Call<PlayGameModel> call = RetrofitClient.getInstance().getApi().playGame("Bearer " + signupModel.token, "name");
         call.enqueue(new Callback<PlayGameModel>() {
             @Override
@@ -66,7 +69,7 @@ public class DashboardActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Log.e("sushil Signup", new Gson().toJson(response.body()));
                     b.tvPeriod.setText("Period : " + response.body().data.bet_no);
-
+                    bet_id = response.body().data.bet_no;
 
                     Calendar cal = Calendar.getInstance();
                     long msec = cal.getTimeInMillis();
@@ -121,11 +124,11 @@ public class DashboardActivity extends AppCompatActivity {
                             playGame();
                         }
                     }.start();
+                    clickListener();
                 } else {
                     Toast.makeText(DashboardActivity.this, "name or mobile or email has already been taken", Toast.LENGTH_SHORT).show();
 
                 }
-
             }
 
             @Override
@@ -161,6 +164,9 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DashboardActivity.this, GreenActivity.class);
+                intent.putExtra("bet", ""+bet_id);
+                intent.putExtra("select", "1");
+
                 startActivity(intent);
             }
         });

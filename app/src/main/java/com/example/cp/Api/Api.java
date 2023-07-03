@@ -96,6 +96,14 @@ public interface Api {
             @Header("Authorization") String Authorization,
             @Field("name") String name
     );
+    @FormUrlEncoded
+    @POST("api/buy_bet_number")
+    Call<WalletDepositeModel> betStart(
+            @Header("Authorization") String Authorization,
+            @Field("bet_id") String bet_id,
+            @Field("select") String select,
+              @Field("contract_money") String contract_money
+    );
 
 
 }

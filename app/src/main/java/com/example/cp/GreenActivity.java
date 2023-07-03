@@ -3,125 +3,114 @@ package com.example.cp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.cp.Api.RetrofitClient;
+import com.example.cp.Modal.SignupModel;
+import com.example.cp.Modal.WalletDepositeModel;
+import com.example.cp.databinding.ActivityAddmoneyBinding;
+import com.example.cp.databinding.ActivityGreenBinding;
+import com.google.gson.Gson;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class GreenActivity extends AppCompatActivity {
+    ActivityGreenBinding b;
+    SessionManager sessionManager;
+    SignupModel signupModel;
+    String bet_id = "";
+    String select = "";
+    String contract_money = "";
 
 
 
-    int count = 0;
-    Context context;
 
-    TextView pressure, close,tv;
-
-    Button decrement,increment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_green);
+        b = ActivityGreenBinding.inflate(getLayoutInflater());
+        View view = b.getRoot();
+        setContentView(view);
+        sessionManager = new SessionManager(GreenActivity.this);
+        signupModel = sessionManager.getLoginSession();
 
+        bet_id= getIntent().getStringExtra("bet");
+        select= getIntent().getStringExtra("select");
 
-        pressure = findViewById(R.id.pressure);
-        close = findViewById(R.id.close);
-        decrement = findViewById(R.id.decrement);
-        increment = findViewById(R.id.increment);
-        tv = findViewById(R.id.tv);
-
-
-
-
-        context=this;
-
-        pressure.setOnClickListener(new View.OnClickListener() {
+        b.confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GreenActivity.this, NotificationActivity.class);
-                startActivity(intent);
+                if (validation()) {
+                    addMoney();
+                }
             }
         });
-
-
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(GreenActivity.this, DashboardActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-
-        increment.setOnClickListener(new View.OnClickListener()
-        {
-
-            @Override
-            public void onClick(View v)
-            {
-                count ++;
-                tv.setText(""+count);
-            }
-        });
-
-
-
-        decrement.setOnClickListener(new View.OnClickListener()
-        {
-
-            @Override
-            public void onClick(View v)
-            {
-                count --;
-                tv.setText(""+count);
-            }
-        });
-
 
     }
 
+    private void addMoney() {
+        Log.e("Token", "Bearer " + signupModel.token);
+        Log.e("bet_id",""+ bet_id);
+        Log.e("select",""+ select);
+        Log.e("contract_money",""+ contract_money);
 
-//    /**
-//     * This method is called when the order button is clicked.
-//     */
-//    public void submitOrder(View view) {
-//        int price = quantity*5;
-////        displayPrice(price);
-//    }
-//
-//    public void increment (View view) {
-//        quantity = quantity + 1;
-//        display(quantity);
-//    }
-//
-//    public void decrement (View view) {
-//        if (quantity>0){
-//            quantity = quantity - 1;
-//            display(quantity);
-//        }
-//    }
-//
-//    /**
-//     * This method displays the given quantity value on the screen.
-//     */
-//    private void display(int number) {
-////        EditText quantityText = (EditText) findViewById(R.id.quantity_textview);
-//        decrement.setText("" + number);
-//    }
-//
-//    /**
-//     * This method displays the given price on the screen.
-//     */
-////    private void displayPrice(int number) {
-//////        TextView priceTextView = (TextView) findViewById(R.id.price_textview);
-//////        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-////        increment.setText("" - number);
-////
-////    }
+        Call<WalletDepositeModel> call = RetrofitClient.getInstance().getApi().betStart("Bearer " + signupModel.token, bet_id, select,contract_money);
+        call.enqueue(new Callback<WalletDepositeModel>() {
+            @Override
+            public void onResponse(Call<WalletDepositeModel> call, Response<WalletDepositeModel> response) {
+                if (response.isSuccessful()) {
+                    Log.e("sushil Signup", new Gson().toJson(response.body()));
+                    if (response.body().message.equalsIgnoreCase("Bet Submitted Successfully")) {
+                        Toast.makeText(GreenActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(GreenActivity.this, HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+
+                    } else {
+                        Toast.makeText(GreenActivity.this, "name or mobile or email has already been taken", Toast.LENGTH_SHORT).show();
+
+                    }
+                } else {
+                    Toast.makeText(GreenActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WalletDepositeModel> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+    }
 
 
+    boolean validation() {
+        contract_money = b.etContract.getText().toString();
+
+        if (b.etContract.getText().toString().isEmpty()) {
+            Toast.makeText(GreenActivity.this, "amount is required!!!!", Toast.LENGTH_SHORT).show();
+            return false;
+
+        }
+        return true;
+    }
+
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }
+
+
