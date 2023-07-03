@@ -136,7 +136,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
-                                android:text=":    Ajit"
+                                android:text=":    "
                                 android:textSize="15sp" />
                         </LinearLayout>
 
@@ -163,7 +163,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
-                                android:text=":    436456547"
+                                android:text=":    "
                                 android:textSize="15sp" />
                         </LinearLayout>
 
@@ -188,7 +188,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
-                                android:text=":    93454646657"
+                                android:text=":   "
                                 android:textSize="15sp" />
                         </LinearLayout>
 
@@ -213,7 +213,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="start"
-                                android:text=":    2345"
+                                android:text=":    "
                                 android:textSize="15dp" />
                         </LinearLayout>
 

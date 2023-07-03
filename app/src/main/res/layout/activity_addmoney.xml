@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -85,12 +86,17 @@
 
 
                         <TextView
+
+                            android:id="@+id/tvWallet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text=" 25000"
-                            android:textColor="@color/black" />
+                            android:padding="10dp"
+                            android:text="₹ 0.00"
+                            android:textColor="@color/green"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
 
 
                         <!--                <LinearLayout-->
@@ -168,8 +174,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="90dp"
@@ -221,8 +227,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="90dp"
@@ -339,19 +345,19 @@
                     android:background="@drawable/ssa"
                     android:backgroundTint="@color/black"
                     android:gravity="center"
-                    android:text="Platform1 Records"
+                    android:text="Deposite Records"
                     android:textColor="@color/white" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:layout_height="250dp"
+                    android:layout_margin="10dp">
 
-
-                    <HorizontalScrollView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -360,43 +366,53 @@
 
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:id="@+id/tvSr"
+                                android:layout_width="60dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center"
                                 android:text="Sr.No"
                                 android:textStyle="bold" />
 
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:id="@+id/tvRef"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
+                                android:gravity="center"
                                 android:text="Utr/RefNo"
                                 android:textColor="@color/black"
                                 android:textStyle="bold" />
 
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:id="@+id/tvAmount"
+                                android:layout_width="60dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
+                                android:gravity="center"
                                 android:text="Amount"
                                 android:textColor="@color/black"
                                 android:textStyle="bold" />
 
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:id="@+id/tvStatus"
+                                android:layout_width="60dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
+                                android:gravity="center"
                                 android:text="Status"
                                 android:textColor="@color/black"
                                 android:textStyle="bold" />
 
 
                             <TextView
+                                android:id="@+id/tvCreate"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
+                                android:gravity="center"
                                 android:text="CretedAt"
                                 android:textColor="@color/black"
                                 android:textStyle="bold" />
@@ -408,72 +424,18 @@
                                 android:layout_marginStart="10dp"
                                 android:text="UpdatedAt"
                                 android:textColor="@color/black"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:visibility="gone" />
 
 
                         </LinearLayout>
 
-                    </HorizontalScrollView>
-
-                </androidx.cardview.widget.CardView>
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/black">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/action_home"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="0dp"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvDeposite"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawableTop="@drawable/baseline_home_24"
-                            android:drawableTint="@color/white"
-                            android:gravity="center"
                             android:orientation="vertical"
-                            android:text="Home"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:id="@+id/action_win"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawableTop="@drawable/baseline_home_24"
-                            android:drawableTint="@color/white"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:text="Win"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white" />
-
-
-                        <TextView
-                            android:id="@+id/action_Profile"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawableTop="@drawable/baseline_person_24"
-                            android:drawableTint="@color/white"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:text="Profile"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white" />
-
-
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                     </LinearLayout>
 
 

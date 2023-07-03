@@ -8,13 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.cp.Adapter.DepositeAdapter;
+import com.example.cp.Adapter.PlateformAdapter;
 import com.example.cp.Api.RetrofitClient;
 import com.example.cp.Modal.AddBankAccountModel;
+import com.example.cp.Modal.DepositeListModel;
+import com.example.cp.Modal.PlateformModel;
 import com.example.cp.Modal.SignupModel;
 import com.example.cp.Modal.WalletDepositeModel;
+import com.example.cp.Modal.WalletModel;
 import com.example.cp.databinding.ActivityAddmoneyBinding;
 import com.google.gson.Gson;
 
@@ -57,6 +63,8 @@ public class AddMoneyActivity extends AppCompatActivity {
                 }
             }
         });
+        wallet();
+        deposite();
 
     }
 
@@ -111,7 +119,58 @@ public class AddMoneyActivity extends AppCompatActivity {
         }
         return true;
     }
+    private void wallet() {
+        Log.e("token", "Bearer " + signupModel.token);
+        /*ProgressDialog progressDialog = new ProgressDialog(DashboardActivity.this);
+        progressDialog.show();
+        progressDialog.setMessage("Loading...");*/
+        Call<WalletModel> call = RetrofitClient.getInstance().getApi().walletBalance("Bearer " + signupModel.token);
+        call.enqueue(new Callback<WalletModel>() {
+            @Override
+            public void onResponse(@NonNull Call<WalletModel> call, @NonNull Response<WalletModel> response) {
+                if (response.isSuccessful()) {
+                    //  progressDialog.dismiss();
+                    Log.e("sushil Signup", new Gson().toJson(response.body()));
+                    b.tvWallet.setText("₹ "+response.body().data.get(0).wallet_amount);
+                } else {
+                    Toast.makeText(AddMoneyActivity.this, "name or mobile or email has already been taken", Toast.LENGTH_SHORT).show();
 
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WalletModel> call, Throwable t) {
+                t.printStackTrace();
+                //  progressDialog.dismiss();
+
+            }
+        });
+    }
+    private void deposite() {
+        Log.e("token", "Bearer " + signupModel.token);
+
+        Call<DepositeListModel> call = RetrofitClient.getInstance().getApi().depositeList("Bearer " + signupModel.token);
+        call.enqueue(new Callback<DepositeListModel>() {
+            @Override
+            public void onResponse(@NonNull Call<DepositeListModel> call, @NonNull Response<DepositeListModel> response) {
+                if (response.isSuccessful()) {
+                    Log.e("sushil Signup", new Gson().toJson(response.body()));
+                    DepositeAdapter depositeAdapter = new DepositeAdapter(response.body().data, AddMoneyActivity.this);
+                    b.rvDeposite.setAdapter(depositeAdapter);
+                } else {
+                    Toast.makeText(AddMoneyActivity.this, "name or mobile or email has already been taken", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DepositeListModel> call, Throwable t) {
+                t.printStackTrace();
+
+
+            }
+        });
+    }
 
     @Override
     public boolean onSupportNavigateUp() {

@@ -9,17 +9,20 @@
 
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/back"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@color/green"
         app:navigationIcon="@drawable/baseline_arrow_back_24"
         app:title="1"
         app:titleTextColor="@color/white" />
 
     <TextView
+        android:id="@+id/tvBet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        android:textColor="@color/black"
         android:text="Contract Money"
         android:textSize="15dp"
         android:textStyle="bold" />
@@ -136,7 +139,7 @@
             android:backgroundTint="@color/blue"
             android:padding="10dp"
             android:text="PRESALE RULE"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="16dp"
             android:textStyle="bold" />
 

@@ -3,11 +3,16 @@ package com.example.cp.Api;
 
 import com.example.cp.Modal.AddBankAccountModel;
 import com.example.cp.Modal.ChangePasswordModel;
+import com.example.cp.Modal.DepositeListModel;
 import com.example.cp.Modal.ForgotPasswordModel;
 import com.example.cp.Modal.InviteModel;
+import com.example.cp.Modal.MyPlateformModel;
+import com.example.cp.Modal.PlateformModel;
 import com.example.cp.Modal.PlayGameModel;
+import com.example.cp.Modal.ProfileModel;
 import com.example.cp.Modal.SignupModel;
 import com.example.cp.Modal.WalletDepositeModel;
+import com.example.cp.Modal.WalletModel;
 import com.example.cp.Modal.WalletWithdrawlModel;
 
 import retrofit2.Call;
@@ -103,6 +108,26 @@ public interface Api {
             @Field("bet_id") String bet_id,
             @Field("select") String select,
               @Field("contract_money") String contract_money
+    );
+    @GET("api/my/platform")
+    Call<MyPlateformModel> myPlateform(
+            @Header("Authorization") String Authorization
+    );
+    @GET("api/platform")
+    Call<PlateformModel> plateform(
+            @Header("Authorization") String Authorization
+    );
+    @GET("api/user/profile")
+    Call<ProfileModel> profile(
+            @Header("Authorization") String Authorization
+    );
+    @GET("api/wallet/balance")
+    Call<WalletModel> walletBalance(
+            @Header("Authorization") String Authorization
+    );
+    @GET("api/deposit/list")
+    Call<DepositeListModel> depositeList(
+            @Header("Authorization") String Authorization
     );
 
 
