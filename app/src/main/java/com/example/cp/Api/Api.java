@@ -5,6 +5,7 @@ import com.example.cp.Modal.AddBankAccountModel;
 import com.example.cp.Modal.ChangePasswordModel;
 import com.example.cp.Modal.ForgotPasswordModel;
 import com.example.cp.Modal.InviteModel;
+import com.example.cp.Modal.PlayGameModel;
 import com.example.cp.Modal.SignupModel;
 import com.example.cp.Modal.WalletDepositeModel;
 import com.example.cp.Modal.WalletWithdrawlModel;
@@ -88,6 +89,12 @@ public interface Api {
             @Field("otp") String otp
 
 
+    );
+    @FormUrlEncoded
+    @POST("api/play/game")
+    Call<PlayGameModel> playGame(
+            @Header("Authorization") String Authorization,
+            @Field("name") String name
     );
 
 
