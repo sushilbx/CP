@@ -88,14 +88,14 @@ public class GreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (validation()) {
-                    addMoney();
+                    betting();
                 }
             }
         });
 
     }
 
-    private void addMoney() {
+    private void betting() {
         Log.e("Token", "Bearer " + signupModel.token);
         Log.e("bet_id", "" + bet_id);
         Log.e("select", "" + select);
@@ -109,6 +109,7 @@ public class GreenActivity extends AppCompatActivity {
                     Log.e("sushil Signup", new Gson().toJson(response.body()));
                     if (response.body().message.equalsIgnoreCase("Bet Submitted Successfully")) {
                         Toast.makeText(GreenActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                        getBetting();
                         Intent intent = new Intent(GreenActivity.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
@@ -119,6 +120,24 @@ public class GreenActivity extends AppCompatActivity {
                     }
                 } else {
                     Toast.makeText(GreenActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WalletDepositeModel> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+    }
+
+    private void getBetting() {
+        Call<WalletDepositeModel> call = RetrofitClient.getInstance().getApi().betGet("Bearer " + signupModel.token, "name");
+        call.enqueue(new Callback<WalletDepositeModel>() {
+            @Override
+            public void onResponse(Call<WalletDepositeModel> call, Response<WalletDepositeModel> response) {
+                if (response.isSuccessful()) {
+                    Log.e("sushil Signup", new Gson().toJson(response.body()));
                 }
             }
 
