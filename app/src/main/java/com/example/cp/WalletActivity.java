@@ -70,7 +70,7 @@ public class WalletActivity extends AppCompatActivity {
 
 
         tvName = findViewById(R.id.tvName);
-        tvuserId = findViewById(R.id.tvuserId);
+       // tvuserId = findViewById(R.id.tvuserId);
         tvPhone = findViewById(R.id.tvPhone);
         tvbalance = findViewById(R.id.tvbalance);
 
@@ -193,7 +193,7 @@ public class WalletActivity extends AppCompatActivity {
                     Log.e("sushil Signup", new Gson().toJson(response.body()));
                     tvName.setText(":   " + response.body().data.get(0).name);
 //                                gender.setText(":   " + tm_gender);
-                    tvuserId.setText(":   " + response.body().data.get(0).id);
+                  //  tvuserId.setText(":   " + response.body().data.get(0).id);
                     tvPhone.setText(":   " + response.body().data.get(0).phone);
                     tvbalance.setText(":   " + response.body().data.get(0).wallet_amount);
                 } else {

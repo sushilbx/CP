@@ -221,7 +221,7 @@ public class DashboardActivity extends AppCompatActivity {
 //                    long dateString = Long.parseLong(sdfff.format(new Date(currentTimeMillis)));
 //                    Log.e("current time", "" + dateString);
 
-                    countDown = startTime - currentTimeMillis;
+                    countDown = endTime - currentTimeMillis;
 
 
                     clickListener();
