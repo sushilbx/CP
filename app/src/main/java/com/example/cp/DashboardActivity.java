@@ -44,6 +44,7 @@ public class DashboardActivity extends AppCompatActivity {
     long countDown = 0;
 
     String bet_id = "";
+    long currentTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +81,7 @@ public class DashboardActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     //  progressDialog.dismiss();
                     Log.e("sushil Signup", new Gson().toJson(response.body()));
-                    b.tvWallet.setText("₹ "+response.body().data.get(0).wallet_amount);
+                    b.tvWallet.setText("₹ " + response.body().data.get(0).wallet_amount);
                 } else {
                     Toast.makeText(DashboardActivity.this, "name or mobile or email has already been taken", Toast.LENGTH_SHORT).show();
 
@@ -162,6 +163,11 @@ public class DashboardActivity extends AppCompatActivity {
                     b.tvPeriod.setText("Period : " + response.body().data.bet_no);
                     bet_id = response.body().data.bet_no;
 
+
+
+
+
+
                     Calendar cal = Calendar.getInstance();
                     long msec = cal.getTimeInMillis();
                     Log.e("Milli Seconds: ", "" + msec);
@@ -180,6 +186,14 @@ public class DashboardActivity extends AppCompatActivity {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
+
+
+
+
+
+
+
+
                     Calendar cale = Calendar.getInstance();
                     long msecc = cale.getTimeInMillis();
                     Log.e("Milli Seconds: ", "" + msecc);
@@ -199,22 +213,7 @@ public class DashboardActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     // countDown = endTime - startTime;
-                    Log.e("count", "" + countDown);
-                    new CountDownTimer(countDown, 1000) {
 
-                        public void onTick(long duration) {
-
-                            long Mmin = (duration / 1000) / 60;
-                            long Ssec = (duration / 1000) % 60;
-                            if (Ssec < 10) {
-                                b.tvCount.setText("" + Mmin + ":0" + Ssec);
-                            } else b.tvCount.setText("" + Mmin + ":" + Ssec);
-                        }
-
-                        public void onFinish() {
-                            playGame();
-                        }
-                    }.start();
 
                     long currentTimeMillis = System.currentTimeMillis();
                     SimpleDateFormat sdfff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -223,8 +222,61 @@ public class DashboardActivity extends AppCompatActivity {
 
                     countDown = endTime - currentTimeMillis;
 
-
                     clickListener();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    Log.e("count", "" + countDown);
+                    new CountDownTimer(countDown, 1000) {
+                        public void onTick(long duration) {
+
+                            long Mmin = (duration / 1000) / 60;
+                            long Ssec = (duration / 1000) % 60;
+                            if (Ssec < 10) {
+                                b.tvCount.setText("" + Mmin + ":0" + Ssec);
+
+                            } else{ b.tvCount.setText("" + Mmin + ":" + Ssec);}
+                            if (endTime-System.currentTimeMillis() < 20000) {
+                                b.green.setClickable(false);
+                                b.violet.setClickable(false);
+                                b.red.setClickable(false);
+                                b.tv0.setClickable(false);
+                                b.tv1.setClickable(false);
+                                b.tv2.setClickable(false);
+                                b.tv3.setClickable(false);
+                                b.tv4.setClickable(false);
+                                b.tv5.setClickable(false);
+                                b.tv6.setClickable(false);
+                                b.tv7.setClickable(false);
+                                b.tv8.setClickable(false);
+                                b.tv9.setClickable(false);
+                                b.tvStartWetting.setVisibility(View.VISIBLE);
+                            }else {
+                                b.tvStartWetting.setVisibility(View.GONE);
+
+                            }
+                        }
+
+                        public void onFinish() {
+                            playGame();
+                        }
+                    }.start();
+
+
                 } else {
                     Toast.makeText(DashboardActivity.this, "name or mobile or email has already been taken", Toast.LENGTH_SHORT).show();
 

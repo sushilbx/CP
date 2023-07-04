@@ -215,6 +215,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+                android:visibility="gone"
                 app:tabSelectedTextColor="@color/black"
                 app:tabTextColor="@color/black" />
 
@@ -231,6 +232,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
+                android:visibility="gone"
                 android:background="@drawable/ssa"
                 android:backgroundTint="@color/black"
                 android:gravity="center"
@@ -252,6 +254,7 @@
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
+                    android:visibility="gone"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
