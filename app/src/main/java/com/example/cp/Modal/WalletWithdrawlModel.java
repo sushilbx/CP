@@ -1,10 +1,12 @@
 package com.example.cp.Modal;
 
 import java.util.Date;
+import java.util.List;
 
 public class WalletWithdrawlModel {
     public String message;
-    public Withdrawl data;
+
+    public List<Withdrawl> data ;
     public class Withdrawl{
         public String transaction_id;
         public int user_id;
@@ -20,8 +22,8 @@ public class WalletWithdrawlModel {
         public String payout_mode;
         public String status;
         public Date updated_at;
-        public Date created_at;
-        public int id;
+        public String created_at;
+        public String id;
     }
 
 }

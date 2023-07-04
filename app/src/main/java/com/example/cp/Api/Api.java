@@ -129,6 +129,10 @@ public interface Api {
     Call<DepositeListModel> depositeList(
             @Header("Authorization") String Authorization
     );
+    @GET("api/withdrawal/list")
+    Call<WalletWithdrawlModel> withdrawList(
+            @Header("Authorization") String Authorization
+    );
     @FormUrlEncoded
     @POST("api/buy_bet_result")
     Call<WalletDepositeModel> betGet(
