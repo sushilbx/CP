@@ -1,13 +1,11 @@
 package com.example.cp;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +17,7 @@ import com.example.cp.Adapter.PlateformAdapter;
 import com.example.cp.Api.RetrofitClient;
 import com.example.cp.Modal.MyPlateformModel;
 import com.example.cp.Modal.PlateformModel;
+import com.example.cp.Modal.PlayGame;
 import com.example.cp.Modal.PlayGameModel;
 import com.example.cp.Modal.SignupModel;
 import com.example.cp.Modal.WalletModel;
@@ -39,12 +38,7 @@ public class DashboardActivity extends AppCompatActivity {
     ActivityDashboardBinding b;
     SessionManager sessionManager;
     SignupModel signupModel;
-    long startTime = 0;
-    long endTime = 0;
-    long countDown = 0;
-
-    String bet_id = "";
-    long currentTime;
+    CountDownTimer timer = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,17 +49,40 @@ public class DashboardActivity extends AppCompatActivity {
         sessionManager = new SessionManager(DashboardActivity.this);
         signupModel = sessionManager.getLoginSession();
 
+        listener();
 
+        playGame();
+        myPlateForm();
+        plateform();
+        wallet();
+
+    }
+
+    private void listener() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24);
-        playGame();
-        myPlateForm();
-        plateform();
-        wallet();
+
+        b.addmoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, AddMoneyActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        b.readrules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, ReadrulesActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -153,164 +170,32 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void playGame() {
+        cancelTimer();
         Log.e("token", "Bearer " + signupModel.token);
+        Log.e("playGame", "Started");
         Call<PlayGameModel> call = RetrofitClient.getInstance().getApi().playGame("Bearer " + signupModel.token, "name");
         call.enqueue(new Callback<PlayGameModel>() {
             @Override
             public void onResponse(@NonNull Call<PlayGameModel> call, @NonNull Response<PlayGameModel> response) {
+                Log.e("response", new Gson().toJson(response.body()));
                 if (response.isSuccessful()) {
-                    Log.e("sushil Signup", new Gson().toJson(response.body()));
-                    b.tvPeriod.setText("Period : " + response.body().data.bet_no);
-                    bet_id = response.body().data.bet_no;
-
-
-
-
-
-
-                    Calendar cal = Calendar.getInstance();
-                    long msec = cal.getTimeInMillis();
-                    Log.e("Milli Seconds: ", "" + msec);
-
-                    //for response choose
-                    String responseTime = response.body().data.bet_start_time;
-                    Log.e("Milli Seconds2: ", "" + responseTime);
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
-                    long timeInMilliseconds = 0;
-                    try {
-                        Date mDate = sdf.parse(responseTime);
-                        assert mDate != null;
-                        timeInMilliseconds = mDate.getTime();
-                        Log.e("Date in milli :: ", "" + timeInMilliseconds);
-                        startTime = timeInMilliseconds;
-                    } catch (ParseException e) {
-                        e.printStackTrace();
+                    if (response.body() != null && response.body().data!=null) {
+                        startGame(response.body().data);
                     }
-
-
-
-
-
-
-
-
-                    Calendar cale = Calendar.getInstance();
-                    long msecc = cale.getTimeInMillis();
-                    Log.e("Milli Seconds: ", "" + msecc);
-
-                    //for response choose
-                    String responseTimee = response.body().data.bet_end_time;
-                    Log.e("Milli Seconds2: ", "" + responseTimee);
-                    SimpleDateFormat sdff = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
-                    long timeInMillisecondss = 0;
-                    try {
-                        Date mDate = sdff.parse(responseTimee);
-                        assert mDate != null;
-                        timeInMillisecondss = mDate.getTime();
-                        Log.e("Date in milli :: ", "" + timeInMilliseconds);
-                        endTime = timeInMillisecondss;
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    // countDown = endTime - startTime;
-
-
-                    long currentTimeMillis = System.currentTimeMillis();
-                    SimpleDateFormat sdfff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-//                    long dateString = Long.parseLong(sdfff.format(new Date(currentTimeMillis)));
-//                    Log.e("current time", "" + dateString);
-
-                    countDown = endTime - currentTimeMillis;
-
-                    clickListener();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    Log.e("count", "" + countDown);
-                    new CountDownTimer(countDown, 1000) {
-                        public void onTick(long duration) {
-
-                            long Mmin = (duration / 1000) / 60;
-                            long Ssec = (duration / 1000) % 60;
-                            if (Ssec < 10) {
-                                b.tvCount.setText("" + Mmin + ":0" + Ssec);
-
-                            } else{ b.tvCount.setText("" + Mmin + ":" + Ssec);}
-                            if (endTime-System.currentTimeMillis() < 20000) {
-                                b.green.setClickable(false);
-                                b.violet.setClickable(false);
-                                b.red.setClickable(false);
-                                b.tv0.setClickable(false);
-                                b.tv1.setClickable(false);
-                                b.tv2.setClickable(false);
-                                b.tv3.setClickable(false);
-                                b.tv4.setClickable(false);
-                                b.tv5.setClickable(false);
-                                b.tv6.setClickable(false);
-                                b.tv7.setClickable(false);
-                                b.tv8.setClickable(false);
-                                b.tv9.setClickable(false);
-                                b.tvStartWetting.setVisibility(View.VISIBLE);
-                            }else {
-                                b.tvStartWetting.setVisibility(View.GONE);
-
-                            }
-                        }
-
-                        public void onFinish() {
-                            playGame();
-                        }
-                    }.start();
-
-
-                } else {
-                    Toast.makeText(DashboardActivity.this, "name or mobile or email has already been taken", Toast.LENGTH_SHORT).show();
-
                 }
             }
 
             @Override
             public void onFailure(Call<PlayGameModel> call, Throwable t) {
                 t.printStackTrace();
-
+                cancelTimer();
             }
         });
 
     }
 
 
-    private void clickListener() {
-        b.addmoney.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DashboardActivity.this, AddMoneyActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-        b.readrules.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DashboardActivity.this, ReadrulesActivity.class);
-                startActivity(intent);
-            }
-        });
-
+    private void clickListener(String bet_id) {
 
         b.green.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -444,4 +329,75 @@ public class DashboardActivity extends AppCompatActivity {
         return true;
     }
 
+    void startGame(PlayGame model) {
+        Log.e("startGame", new Gson().toJson(model));
+        b.tvPeriod.setText("Period : " + model.bet_no);
+        clickListener(model.bet_no);
+        if (model.bet_end_time.getTime() > System.currentTimeMillis()) {
+            timer = getCountDownTimer(model.bet_end_time.getTime() - System.currentTimeMillis());
+        } else {
+            timer = null;
+            playGame();
+        }
+    }
+
+    void cancelTimer() {
+        if (timer != null) {
+            timer.cancel();
+        }
+    }
+
+    public CountDownTimer getCountDownTimer(long milliseconds) {
+        CountDownTimer countDownTimer = new CountDownTimer(milliseconds, 1000) {
+            public void onTick(long duration) {
+                setTime(duration);
+                setNotClickable(duration < 20000);
+            }
+
+            public void onFinish() {
+                cancel();
+                timer=null;
+                playGame();
+            }
+        }.start();
+        return countDownTimer;
+    }
+
+    void setTime(long duration) {
+        long min = (duration / 1000) / 60;
+        long sec = (duration / 1000) % 60;
+        Log.e("kkkkkkkkkkkkk", "" + min + ":0" + sec);
+        b.tvCount.setText(String.format(Locale.getDefault(), "%s:%02d", min, sec));
+    }
+
+    void setNotClickable(boolean notClickable) {
+        if (notClickable) {
+            if (b.tvStartWetting.getVisibility() == View.GONE) {
+                b.tvStartWetting.setVisibility(View.VISIBLE);
+            }
+            b.green.setOnClickListener(null);
+            b.violet.setOnClickListener(null);
+            b.red.setOnClickListener(null);
+            b.tv0.setOnClickListener(null);
+            b.tv1.setOnClickListener(null);
+            b.tv2.setOnClickListener(null);
+            b.tv3.setOnClickListener(null);
+            b.tv4.setOnClickListener(null);
+            b.tv5.setOnClickListener(null);
+            b.tv6.setOnClickListener(null);
+            b.tv7.setOnClickListener(null);
+            b.tv8.setOnClickListener(null);
+            b.tv9.setOnClickListener(null);
+        } else {
+            if (b.tvStartWetting.getVisibility() == View.VISIBLE) {
+                b.tvStartWetting.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cancelTimer();
+    }
 }

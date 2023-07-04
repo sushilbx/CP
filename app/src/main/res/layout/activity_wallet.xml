@@ -242,6 +242,7 @@
                                     android:backgroundTint="@android:color/holo_blue_bright"
                                     android:gravity="center"
                                     android:text="Notification"
+                                    android:id="@+id/tvNotification"
                                     android:textColor="@color/white"
                                     android:textSize="15dp" />
 
@@ -388,18 +389,6 @@
                 android:textColor="@color/white"
                 android:textSize="18dp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/ssa"
-                android:backgroundTint="@color/design_default_color_secondary_variant"
-                android:gravity="center"
-                android:text="Download app"
-                android:textColor="@color/white"
-                android:textSize="18dp" />
 
 
             <TextView

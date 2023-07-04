@@ -40,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
     String profileName;
     private NavigationView navigationView;
 
-    TextView action_invite,action_wallet,action_account,action_bank,action_customerSupport,action_addmoney,textView_name,textView_id,textView_mobile,textView_availablebalance;
+    TextView tvLogout,action_invite,action_wallet,action_account,action_bank,action_customerSupport,action_addmoney,textView_name,textView_id,textView_mobile,textView_availablebalance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24);
 
 
-
+        tvLogout = findViewById(R.id.tvLogout);
         action_invite = findViewById(R.id.action_invite);
         action_wallet = findViewById(R.id.action_wallet);
         action_account = findViewById(R.id.action_account);
@@ -153,7 +153,13 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        tvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                sessionManager.logoutUser();
+            }
+        });
     }
 
     private void getDetailsFromServer() {

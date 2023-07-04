@@ -10,11 +10,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cp.Adapter.WithdrawAdapter;
 import com.example.cp.Api.RetrofitClient;
 import com.example.cp.Modal.InviteModel;
 import com.example.cp.Modal.SignupModel;
+import com.example.cp.Modal.WalletModel;
 import com.example.cp.Modal.WalletWithdrawlModel;
 import com.example.cp.databinding.ActivityInviteBinding;
 import com.example.cp.databinding.ActivityWithdrawalBinding;
@@ -52,7 +55,8 @@ public class WithdrawalActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        getwithdrawl();
+        wallet();
         b.tvWithdrawal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +66,31 @@ public class WithdrawalActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private void getwithdrawl() {
+        Log.e("token", "Bearer " + signupModel.token);
+
+        Call<WalletWithdrawlModel> call = RetrofitClient.getInstance().getApi().withdrawList("Bearer " + signupModel.token);
+        call.enqueue(new Callback<WalletWithdrawlModel>() {
+            @Override
+            public void onResponse(@NonNull Call<WalletWithdrawlModel> call, @NonNull Response<WalletWithdrawlModel> response) {
+                if (response.isSuccessful()) {
+                    Log.e("sushil Signup", new Gson().toJson(response.body()));
+                    WithdrawAdapter withdrawAdapter = new WithdrawAdapter(response.body().data, WithdrawalActivity.this);
+                    b.rvWithdrawMoney.setAdapter(withdrawAdapter);
+                } else {
+                    Toast.makeText(WithdrawalActivity.this, "name or mobile or email has already been taken", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WalletWithdrawlModel> call, Throwable t) {
+                t.printStackTrace();
+
+
+            }
+        });
     }
 
     private void withdrawal() {
@@ -130,6 +159,33 @@ public class WithdrawalActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+    private void wallet() {
+        Log.e("token", "Bearer " + signupModel.token);
+        /*ProgressDialog progressDialog = new ProgressDialog(DashboardActivity.this);
+        progressDialog.show();
+        progressDialog.setMessage("Loading...");*/
+        Call<WalletModel> call = RetrofitClient.getInstance().getApi().walletBalance("Bearer " + signupModel.token);
+        call.enqueue(new Callback<WalletModel>() {
+            @Override
+            public void onResponse(@NonNull Call<WalletModel> call, @NonNull Response<WalletModel> response) {
+                if (response.isSuccessful()) {
+                    //  progressDialog.dismiss();
+                    Log.e("sushil Signup", new Gson().toJson(response.body()));
+                    b.tvBalance.setText("₹ "+response.body().data.get(0).wallet_amount);
+                } else {
+                    Toast.makeText(WithdrawalActivity.this, "name or mobile or email has already been taken", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WalletModel> call, Throwable t) {
+                t.printStackTrace();
+                //  progressDialog.dismiss();
+
+            }
+        });
     }
 }
 

@@ -38,7 +38,7 @@ public class WalletActivity extends AppCompatActivity {
     String profileName;
     private NavigationView navigationView;
 
-    TextView tvName,tvuserId,tvPhone,tvbalance,action_addmoney,action_invite,action_wallet,action_bankaccount,tvAddMoney,action_withdrawal,action_transaction,action_changepassword,action_logout;
+    TextView tvName,tvNotification,tvuserId,tvPhone,tvbalance,action_addmoney,action_invite,action_wallet,action_bankaccount,tvAddMoney,action_withdrawal,action_transaction,action_changepassword,action_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +65,7 @@ public class WalletActivity extends AppCompatActivity {
         action_changepassword = findViewById(R.id.action_changepassword);
         action_bankaccount = findViewById(R.id.action_bankaccount);
         action_logout = findViewById(R.id.action_logout);
+        tvNotification = findViewById(R.id.tvNotification);
 
 
 
@@ -98,7 +99,13 @@ public class WalletActivity extends AppCompatActivity {
         });
 
 
-
+        tvNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WalletActivity.this,ProfileNotinActivity.class);
+                startActivity(intent);
+            }
+        });
         action_invite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,10 +169,10 @@ public class WalletActivity extends AppCompatActivity {
         action_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(WalletActivity.this,SigninActivity.class);
-                startActivity(intent);
-            }
-        });
+
+                    sessionManager.logoutUser();
+                }
+            });
 
 
       //  profileImage = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.iv_profileImage1);

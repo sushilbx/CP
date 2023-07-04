@@ -351,18 +351,7 @@
             android:background="@drawable/ssa"
             android:textColor="@color/white"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:text="Download app"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textSize="18dp"
-            android:backgroundTint="@color/design_default_color_secondary_variant"
-            android:background="@drawable/ssa"
-            android:textColor="@color/white"/>
+
 
 
 
@@ -371,6 +360,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:text="Logout"
+            android:id="@+id/tvLogout"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"

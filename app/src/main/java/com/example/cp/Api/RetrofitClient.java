@@ -6,6 +6,7 @@ package com.example.cp.Api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.text.DateFormat;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -20,7 +21,7 @@ public class RetrofitClient {
     private static RetrofitClient instance;
 
     public RetrofitClient() {
-        Gson gson = new GsonBuilder().setLenient().create();
+        Gson gson = new GsonBuilder().setLenient().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
                 .connectTimeout(60, TimeUnit.SECONDS)
