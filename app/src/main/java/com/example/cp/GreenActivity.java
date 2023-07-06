@@ -110,7 +110,7 @@ public class GreenActivity extends AppCompatActivity {
                     if (response.body().message.equalsIgnoreCase("Bet Submitted Successfully")) {
                         Toast.makeText(GreenActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                         getBetting();
-                        Intent intent = new Intent(GreenActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(GreenActivity.this, DashboardActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
 

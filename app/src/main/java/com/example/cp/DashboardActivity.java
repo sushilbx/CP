@@ -358,6 +358,7 @@ public class DashboardActivity extends AppCompatActivity {
                 cancel();
                 timer=null;
                 playGame();
+                myPlateForm();
             }
         }.start();
         return countDownTimer;
@@ -399,5 +400,6 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         cancelTimer();
+        myPlateForm();
     }
 }
