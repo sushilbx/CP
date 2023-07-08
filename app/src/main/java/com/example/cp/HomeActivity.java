@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 
+import com.example.cp.Modal.SignupModel;
 import com.example.cp.Modal.UserSessionManager;
 import com.example.cp.Utils.LoginKeys;
 import com.google.android.material.navigation.NavigationView;
@@ -40,7 +41,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private NavigationView navigationView;
 
-
+    SessionManager sessionManager;
+    SignupModel signupModel;
     Toolbar toolbar;
 
 
@@ -58,7 +60,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        sessionManager = new SessionManager(HomeActivity.this);
+        signupModel = sessionManager.getLoginSession();
 
         action_home = findViewById(R.id.action_home);
         action_win = findViewById(R.id.action_win);
@@ -182,9 +185,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
         else if (item.getItemId() == R.id.action_tandcDesclaimer) {
-            Intent i = new Intent(HomeActivity.this, SigninActivity.class);
-            startActivity(i);
-
+            sessionManager.logoutUser();
 
 
         }

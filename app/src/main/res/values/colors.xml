@@ -13,4 +13,11 @@
     <color name="colorAccent">#E95345</color>
     <color name="trueBlack">#000000</color>
     <color name="otp_editext_color">#DAE2DFDF</color>
+
+
+
+    <color name="pink">#F50057</color>
+    <color name="primary">#b00020</color>
+    <color name="btncolor">#337ab7</color>
+    <color name="lightgreen"> #bee5d3</color>
 </resources>

@@ -53,7 +53,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         playGame();
         myPlateForm();
-        plateform();
+
         wallet();
 
     }
@@ -181,6 +181,7 @@ public class DashboardActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().data!=null) {
                         startGame(response.body().data);
+                        plateform();
                     }
                 }
             }
